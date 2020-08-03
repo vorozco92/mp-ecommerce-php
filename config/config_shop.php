@@ -1,6 +1,6 @@
 <?php
 
 	$config_shop = array(
-		'url_site' => 'http://localhost/ecommerce' 
+		'url_site' => 'https://vorozco92-mp-commerce-php.herokuapp.com' 
 	);
 ?>
