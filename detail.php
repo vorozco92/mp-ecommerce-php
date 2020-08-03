@@ -1,6 +1,4 @@
 <?php
-    echo ' price:'.isset($_POST['img']) ? $_POST['img']: '';
-    
     
 	if (isset($_POST['process_payment']) ){
 		include('class/payment.php');
@@ -10,11 +8,12 @@
 		$price = (double) (isset($_POST['price']) ? $_POST['price'] : 0);
 		$title = isset($_POST['title']) ? $_POST['title'] : '';
 		$picture =  isset($_POST['img']) ? $_POST['img'] : 'no_image.png';
-
+     
+        $item = (object) array();
 		$item->id = '1234';
 		$item->title = $title;
 		$item->description = 'Dispositivo móvil de Tienda e-commerce';
-		$item->picture_url = file_exists($picture) ? $config_shop['url_site'].$picture : '';					
+		$item->picture_url = file_exists('assets/'.$picture) ? $config_shop['url_site'].'/assets/'.$picture : '';					
 		$item->quantity = 1;
 		$item->unit_price = $price;
 		$items_data = array(
@@ -36,25 +35,21 @@
 			)
 			
 		);
-		
-		$payment_methods = array(
-			'payment_methods' =>  array(
-			'excluded_payment_methods' => array(
-				array(
-					'id' =>  'amex'
-				)
+		$em = (object) array();
+		$et = (object) array();
+		$em->id = 'amex';
+		$et->id = 'atm';
+		$payment_methods = array(	
+			'excluded_payment_methods' => array(		
+					$em		
 			),
-			'excluded_payment_types' => array(
-				array(
-					'id' => 'atm'
-				)
+			'excluded_payment_types' => array(		
+					$et	
 			),
 			'installments' => 6
-			)
+			
 		);
-		
-		
-		
+				
 		$preference_data = array(
 			'items' =>  $items_data,
 			'payer' => $payer_data,
@@ -74,7 +69,7 @@
 		error_log(date('H:i:s ') . getenv('REMOTE_ADDR') . "". print_r($preference_data,true)."\n", 3, 'log/notification.log');
 		$response_pref = $p_mp->create_reference($preference_data);
 		error_log(date('H:i:s ') . getenv('REMOTE_ADDR') . " $response_pref\n", 3, 'log/notification.log');
-		
+
 		if ( ! empty($response_pref) ){
 			$response_pref = json_decode($response_pref);
 			if (isset($response_pref->init_point)){
@@ -193,7 +188,7 @@
                                             <div class="clearfix image-list xs-no-js as-util-relatedlink relatedlink" data-relatedlink="6|Powerbeats3 Wireless Earphones - Neighborhood Collection - Brick Red|MPXP2">
                                                 <div class="as-tilegallery-element as-image-selected">
                                                     <div class=""></div>
-                                                    <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url(<?php echo $_POST['img'] ?>) 2x);">
+                                                    <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url('./assets/<?php echo $_POST['img'] ?>') 2x);">
                                                 </div>
                                                 
                                             </div>
@@ -224,7 +219,7 @@
                                             <?php echo $_POST['price'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "Unidad:" . $_POST['unit'] ?>
+                                            <?php echo "Unidad: 1" ?>
                                         </h3>
                                         <input type="hidden" name="process_payment" value="1">
                                     </div>
