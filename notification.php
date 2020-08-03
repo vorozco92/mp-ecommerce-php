@@ -6,7 +6,10 @@
 	foreach($_POST as $key => $value){
 		error_log(date('H:i:s ') . getenv('REMOTE_ADDR') . $key." ".$value."\n", 3, 'log/notification.log');
 	}
-	
+
+	foreach($_GET as $key => $value){
+		error_log(date('H:i:s ') . getenv('REMOTE_ADDR') . "GET ".$key." ".$value."\n", 3, 'log/notification.log');
+	}	
 	//$message_not = json_decode($json_event);		
 	//header('HTTP/1.1 200 OK');
 	//exit;
