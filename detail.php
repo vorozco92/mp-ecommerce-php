@@ -55,7 +55,7 @@
 			'payer' => $payer_data,
 			'payment_methods' => $payment_methods,
 			'external_reference' => 'vero_nik92@hotmail.com',
-			'auto_return' => 'all',
+			'auto_return' => 'approved',
 			'notification_url' => $config_shop['url_site'].'/notification.php',
 			'back_urls' => 
 				array(
