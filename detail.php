@@ -1,3 +1,98 @@
+<?php
+    echo ' price:'.isset($_POST['img']) ? $_POST['img']: '';
+    
+    
+	if (isset($_POST['process_payment']) ){
+		include('class/payment.php');
+		include('config/config_shop.php');
+		
+		$p_mp =  new Payment();				
+		$price = (double) (isset($_POST['price']) ? $_POST['price'] : 0);
+		$title = isset($_POST['title']) ? $_POST['title'] : '';
+		$picture =  isset($_POST['img']) ? $_POST['img'] : 'no_image.png';
+
+		//$item = (objecy);
+		$item->id = '1234';
+		$item->title = $title;
+		$item->description = 'Dispositivo móvil de Tienda e-commerce';
+		$item->picture_url = file_exists($picture) ? $config_shop['url_site'].str_replace('.','', $picture) : '';					
+		$item->quantity = 1;
+		$item->unit_price = $price;
+		$items_data = array(
+				 $item
+		);
+		
+		$payer_data = array(
+			'name' => 'Lalo',
+			'surname' => 'Landa',
+			'phone' => array(
+				'area_code' => '52',
+				'number' => '5549737300',
+			),
+			'address' => array(
+				'zip_code' => '03940',
+				'street_name' => 'Insurgentes Sur',
+				'street_number' => '1602'
+			)
+			
+		);
+		
+		$payment_methods = array(
+			'payment_methods' =>  array(
+			'excluded_payment_methods' => array(
+				array(
+					'id' =>  'amex'
+				)
+			),
+			'excluded_payment_types' => array(
+				array(
+					'id' => 'atm'
+				)
+			),
+			'installments' => 6
+			)
+		);
+		
+		
+		
+		$preference_data = array(
+			'items' =>  $items_data,
+			'payer' => $payer_data,
+			'payment_methods' => $payment_methods,
+			'external_reference' => 'vero_nik92@hotmail.com',
+			'auto_return' => 'all',
+			'notification_url' => $config_shop['url_site'].'/notification.php',
+			'back_urls' => 
+				array(
+					'success' => $config_shop['url_site'].'/success.php',
+					'pending' => $config_shop['url_site'].'/pending.php',
+					'failure' => $config_shop['url_site'].'/failure.php'
+				)
+		);
+		
+		//creación de preferencia
+		
+		//echo '<pre>'.print_r($preference_data,true).'</pre>';die;
+		error_log(date('H:i:s ') . getenv('REMOTE_ADDR') . "". print_r($preference_data,true)."\n", 3, 'log/notification.log');
+		$response_pref = $p_mp->create_reference($preference_data);
+		error_log(date('H:i:s ') . getenv('REMOTE_ADDR') . " $response_pref\n", 3, 'log/notification.log');
+		
+		if ( ! empty($response_pref) ){
+			$response_pref = json_decode($response_pref);
+			if (isset($response_pref->init_point)){
+				header('Location:'.$response_pref->init_point);
+			}
+			else{
+				if (isset($response_pref->message))
+					echo '<p style="background-color:red;padding:6px;">'.$response_pref->message.'</p>';
+				else
+					echo '<p style="background-color:red;padding:6px;">No fue posible procesar tu pago. Intenta más tarde.</p>';
+			}
+		}
+		
+	
+	}
+?>
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -11,7 +106,7 @@
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
-
+	<script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
     <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
 
     <link rel="stylesheet" href="./assets/category.css" media="screen, print">
@@ -114,23 +209,29 @@
 
                                 </div>
                                 <div class="as-producttile-info" style="float:left;min-height: 168px;">
+									<form method="post" action="detail.php">
                                     <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
                                         <div class="as-producttile-title">
                                             <h3 class="as-producttile-name">
                                                 <p class="as-producttile-tilelink">
+													<input type="hidden" name="title" value="<?php echo $_POST['title'] ?>">
                                                     <span data-ase-truncate="2"><?php echo $_POST['title'] ?></span>
+                                                    <input type="hidden" name="img" value="<?php echo $_POST['img'] ?>">
                                                 </p>
 
                                             </h3>
                                         </div>
                                         <h3 >
+											<input type="hidden" name="price" value="<?php echo $_POST['price'] ?>">
                                             <?php echo $_POST['price'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                            <?php echo "Unidad:" . $_POST['unit'] ?>
                                         </h3>
+                                        <input type="hidden" name="process_payment" value="1">
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar la compra</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

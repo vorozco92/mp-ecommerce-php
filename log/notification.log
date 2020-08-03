@@ -1,0 +1,77 @@
+20:47:24 ::1 
+21:31:56 ::1 
+22:00:34 ::1Array
+(
+    [items] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [id] => 1234
+                    [title] => Samsung Galaxy S9
+                    [description] => Dispositivo móvil de Tienda e-commerce
+                    [picture_url] => http://localhost/ecommerce/assets/samsung-galaxy-s9-xxljpg
+                    [quantity] => 1
+                    [unit_price] => 15000
+                )
+
+        )
+
+    [payer] => Array
+        (
+            [name] => Lalo
+            [surname] => Landa
+            [phone] => Array
+                (
+                    [area_code] => 52
+                    [number] => 5549737300
+                )
+
+            [address] => Array
+                (
+                    [zip_code] => 03940
+                    [street_name] => Insurgentes Sur
+                    [street_number] => 1602
+                )
+
+        )
+
+    [payment_methods] => Array
+        (
+            [payment_methods] => Array
+                (
+                    [excluded_payment_methods] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => amex
+                                )
+
+                        )
+
+                    [excluded_payment_types] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => atm
+                                )
+
+                        )
+
+                    [installments] => 6
+                )
+
+        )
+
+    [external_reference] => vero_nik92@hotmail.com
+    [auto_return] => all
+    [notification_url] => http://localhost/ecommerce/notification.php
+    [back_urls] => Array
+        (
+            [success] => http://localhost/ecommerce/success.php
+            [pending] => http://localhost/ecommerce/pending.php
+            [failure] => http://localhost/ecommerce/failure.php
+        )
+
+)
+
+22:00:35 ::1 {"additional_info":"","auto_return":"all","back_urls":{"failure":"http://localhost/ecommerce/failure.php","pending":"http://localhost/ecommerce/pending.php","success":"http://localhost/ecommerce/success.php"},"binary_mode":false,"client_id":"1159009372558727","collector_id":617633181,"coupon_code":null,"coupon_labels":null,"date_created":"2020-08-03T03:00:35.415+00:00","date_of_expiration":null,"expiration_date_from":null,"expiration_date_to":null,"expires":false,"external_reference":"vero_nik92@hotmail.com","id":"617633181-f65511ad-52c1-4409-af56-a36a8740dd52","init_point":"https://www.mercadopago.com.mx/checkout/v1/redirect?pref_id=617633181-f65511ad-52c1-4409-af56-a36a8740dd52","internal_metadata":null,"items":[{"id":"1234","category_id":"","currency_id":"MXN","description":"Dispositivo móvil de Tienda e-commerce","picture_url":"http://localhost/ecommerce/assets/samsung-galaxy-s9-xxljpg","title":"Samsung Galaxy S9","quantity":1,"unit_price":15000}],"marketplace":"NONE","marketplace_fee":0,"metadata":{},"notification_url":"http://localhost/ecommerce/notification.php","operation_type":"regular_payment","payer":{"phone":{"area_code":"52","number":"5549737300"},"address":{"zip_code":"03940","street_name":"Insurgentes Sur","street_number":"1602"},"email":"","identification":{"number":"","type":""},"name":"Lalo","surname":"Landa","date_created":null,"last_purchase":null},"payment_methods":{"default_card_id":null,"default_payment_method_id":null,"excluded_payment_methods":[{"id":""}],"excluded_payment_types":[{"id":""}],"installments":null,"default_installments":null},"processing_modes":null,"product_id":null,"redirect_urls":{"failure":"","pending":"","success":""},"sandbox_init_point":"https://sandbox.mercadopago.com.mx/checkout/v1/redirect?pref_id=617633181-f65511ad-52c1-4409-af56-a36a8740dd52","site_id":"MLM","shipments":{"default_shipping_method":null,"receiver_address":{"zip_code":"","street_name":"","street_number":null,"floor":"","apartment":"","city_name":null,"state_name":null,"country_name":null}},"total_amount":null,"last_updated":null}
