@@ -254,13 +254,13 @@
                                                 </h3>
                                             </div>
                                             <div class="as-price-currentprice as-producttile-currentprice">
-                                                $15.000
+                                                $1500
                                             </div>
                                         </div>
                                         <form action="detail.php" method="get">
                                             <input type="hidden" name="img" value="samsung-galaxy-s9-xxl.jpg">
                                             <input type="hidden" name="title" value="Samsung Galaxy S9">
-                                            <input type="hidden" name="price" value="15000">
+                                            <input type="hidden" name="price" value="1500">
                                             <input type="hidden" name="unit" value="1">
                                             <button type="submit" class="mercadopago-button" formmethod="post">Comprar</button>
                                         </form>
@@ -309,13 +309,13 @@
                                                 </h3>
                                             </div>
                                             <div class="as-price-currentprice as-producttile-currentprice">
-                                                $10.000
+                                                $1000
                                             </div>
                                         </div>
                                         <form action="detail.php" method="get">
                                             <input type="hidden" name="img" value="l6g6.jpg">
                                             <input type="hidden" name="title" value="LG G6">
-                                            <input type="hidden" name="price" value="10000">
+                                            <input type="hidden" name="price" value="1000">
                                             <input type="hidden" name="unit" value="1">
                                             <button type="submit" class="mercadopago-button" formmethod="post">Comprar</button>
                                         </form>
@@ -365,7 +365,7 @@
                                                 </h3>
                                             </div>
                                             <div class="as-price-currentprice as-producttile-currentprice">
-                                                $16.000
+                                                $1600
                                                 <span class="as-price-previousprice as-producttile-previousprice">
                                                 </span>
                                             </div>
@@ -373,7 +373,7 @@
                                         <form action="detail.php" method="get">
                                             <input type="hidden" name="img" value="u_10168742.jpg">
                                             <input type="hidden" name="title" value="iPhone 8">
-                                            <input type="hidden" name="price" value="16000">
+                                            <input type="hidden" name="price" value="1600">
                                             <input type="hidden" name="unit" value="1">
                                             <button type="submit" class="mercadopago-button" formmethod="post">Comprar</button>
                                         </form>
@@ -422,7 +422,7 @@
                                                 </h3>
                                             </div>
                                             <div class="as-price-currentprice as-producttile-currentprice">
-                                                $9.000
+                                                $9000
                                                 <span class="as-price-previousprice as-producttile-previousprice">
                                                 </span>
                                             </div>
@@ -474,13 +474,13 @@
                                                 </h3>
                                             </div>
                                             <div class="as-price-currentprice as-producttile-currentprice">
-                                                $8.000
+                                                $800
                                             </div>
                                         </div>
                                         <form action="detail.php" method="get">
                                             <input type="hidden" name="img" value="motorola-moto-g4-3.jpg">
                                             <input type="hidden" name="title" value="Moto G4">
-                                            <input type="hidden" name="price" value="8000">
+                                            <input type="hidden" name="price" value="800">
                                             <input type="hidden" name="unit" value="1">
                                             <button type="submit" class="mercadopago-button" formmethod="post">Comprar</button>
                                         </form>
@@ -523,7 +523,7 @@
                                                 </h3>
                                             </div>
                                             <div class="as-price-currentprice as-producttile-currentprice">
-                                                $10.000
+                                                $1000
                                                 <span class="as-price-previousprice as-producttile-previousprice">
                                                 </span>
                                             </div>
@@ -531,7 +531,7 @@
                                         <form action="detail.php" method="get">
                                             <input type="hidden" name="img" value="003.jpg">
                                             <input type="hidden" name="title" value="Sony Xperia XZ2">
-                                            <input type="hidden" name="price" value="10000">
+                                            <input type="hidden" name="price" value="1000">
                                             <input type="hidden" name="unit" value="1">
                                             <button type="submit" class="mercadopago-button" formmethod="post">Comprar</button>
                                         </form>

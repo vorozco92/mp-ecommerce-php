@@ -56,7 +56,7 @@
 			'payment_methods' => $payment_methods,
 			'external_reference' => 'vero_nik92@hotmail.com',
 			'auto_return' => 'approved',
-			'notification_url' => $config_shop['url_site'].'/notification.php',
+			'notification_url' => $config_shop['url_site'].'/notification.php?code='.date('YmdHis'),
 			'back_urls' => 
 				array(
 					'success' => $config_shop['url_site'].'/success.php',
