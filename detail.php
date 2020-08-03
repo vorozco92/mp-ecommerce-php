@@ -11,11 +11,10 @@
 		$title = isset($_POST['title']) ? $_POST['title'] : '';
 		$picture =  isset($_POST['img']) ? $_POST['img'] : 'no_image.png';
 
-		//$item = (objecy);
 		$item->id = '1234';
 		$item->title = $title;
 		$item->description = 'Dispositivo móvil de Tienda e-commerce';
-		$item->picture_url = file_exists($picture) ? $config_shop['url_site'].str_replace('.','', $picture) : '';					
+		$item->picture_url = file_exists($picture) ? $config_shop['url_site'].$picture : '';					
 		$item->quantity = 1;
 		$item->unit_price = $price;
 		$items_data = array(
@@ -25,7 +24,8 @@
 		$payer_data = array(
 			'name' => 'Lalo',
 			'surname' => 'Landa',
-			'phone' => array(
+			'email' => 'test_user_58295862@testuser.com',
+ 			'phone' => array(
 				'area_code' => '52',
 				'number' => '5549737300',
 			),
@@ -71,8 +71,6 @@
 		);
 		
 		//creación de preferencia
-		
-		//echo '<pre>'.print_r($preference_data,true).'</pre>';die;
 		error_log(date('H:i:s ') . getenv('REMOTE_ADDR') . "". print_r($preference_data,true)."\n", 3, 'log/notification.log');
 		$response_pref = $p_mp->create_reference($preference_data);
 		error_log(date('H:i:s ') . getenv('REMOTE_ADDR') . " $response_pref\n", 3, 'log/notification.log');
